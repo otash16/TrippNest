@@ -1,0 +1,32 @@
+{
+	"$schema": "https://json.schemastore.org/nest-cli",
+	"collection": "@nestjs/schematics",
+	"sourceRoot": "apps/ease-up-api/src",
+	"compilerOptions": {
+		"deleteOutDir": true,
+		"webpack": true,
+		"tsConfigPath": "apps/ease-up-api/tsconfig.app.json"
+	},
+	"monorepo": true,
+	"root": "apps/ease-up-api",
+	"projects": {
+		"ease-up-api": {
+			"type": "application",
+			"root": "apps/ease-up-api",
+			"entryFile": "main",
+			"sourceRoot": "apps/ease-up-api/src",
+			"compilerOptions": {
+				"tsConfigPath": "apps/ease-up-api/tsconfig.app.json"
+			}
+		},
+		"ease-up-batch": {
+			"type": "application",
+			"root": "apps/ease-up-batch",
+			"entryFile": "main",
+			"sourceRoot": "apps/ease-up-batch/src",
+			"compilerOptions": {
+				"tsConfigPath": "apps/ease-up-batch/tsconfig.app.json"
+			}
+		}
+	}
+}
