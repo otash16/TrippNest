@@ -1,13 +1,13 @@
 services:
   easeUp-api:
-    container_name: easeUp-api
+    container_name: TripNest-api
     restart: always
     image: node:20.10.0
     ports:
       - 4001:3007
     volumes:
-      - ./:/usr/src/easeUp
-    working_dir: /usr/src/easeUp
+      - ./:/usr/src/TripNest
+    working_dir: /usr/src/TripNest
     networks:
       - monorepo-network
 
@@ -18,7 +18,7 @@ services:
     # command: bash -c "npm install && npm run start:dev"
 
   easeUp-batch:
-    container_name: easeUp-batch
+    container_name: TripNest-batch
     restart: unless-stopped
     image: node:20.10.0
     ports:
