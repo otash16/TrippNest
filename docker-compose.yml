@@ -1,42 +1,3 @@
-# services:
-#   easeUp-api:
-#     container_name: TripNest-api
-#     restart: always
-#     image: node:20.10.0
-#     ports:
-#       - 4001:3007
-#     volumes:
-#       - ./:/usr/src/TripNest
-#     working_dir: /usr/src/TripNest
-#     networks:
-#       - monorepo-network
-
-#     # FOR PRODUCTION
-#     command: bash -c "rm -rf dist && npm install && npm run build && npm run start:prod"
-
-#     # FOR DEVELOPMENT
-#     # command: bash -c "npm install && npm run start:dev"
-
-#   easeUp-batch:
-#     container_name: TripNest-batch
-#     restart: unless-stopped
-#     image: node:20.10.0
-#     ports:
-#       - 4002:3008
-#     volumes:
-#       - ./:/usr/src/easeUp
-#     working_dir: /usr/src/easeUp
-#     networks:
-#       - monorepo-network
-
-#     # FOR PRODUCTION
-#     command: bash -c "npm install && npm run build && npm run start:prod:batch"
-
-# networks:
-#   monorepo-network:
-#     driver: bridge
-
-
 services:
   easeUp-api:
     container_name: TripNest-api
@@ -46,10 +7,15 @@ services:
       - 4001:3007
     volumes:
       - ./:/usr/src/TripNest
-    working_dir: /usr/src/TripNest/apps/ease-up-api
+    working_dir: /usr/src/TripNest
     networks:
       - monorepo-network
-    command: bash -c "npm install && npm run build && npm run start:prod"
+
+    # FOR PRODUCTION
+    command: bash -c "rm -rf dist && npm install && npm run build && npm run start:prod"
+
+    # FOR DEVELOPMENT
+    # command: bash -c "npm install && npm run start:dev"
 
   easeUp-batch:
     container_name: TripNest-batch
@@ -58,12 +24,15 @@ services:
     ports:
       - 4002:3008
     volumes:
-      - ./:/usr/src/TripNest
-    working_dir: /usr/src/TripNest/apps/ease-up-batch
+      - ./:/usr/src/easeUp
+    working_dir: /usr/src/easeUp
     networks:
       - monorepo-network
+
+    # FOR PRODUCTION
     command: bash -c "npm install && npm run build && npm run start:prod:batch"
 
 networks:
   monorepo-network:
     driver: bridge
+
